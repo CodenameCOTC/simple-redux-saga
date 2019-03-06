@@ -1,0 +1,11 @@
+.container {
+  flex: 1
+}
+
+.button {
+    color: whitesmoke;
+    background-color: green;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-right: 10px;
+}
