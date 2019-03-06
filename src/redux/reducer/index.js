@@ -2,6 +2,7 @@ import * as types from "../actions/types";
 
 const initialState = {
   posts: [],
+  currentPage: 1,
   isLoading: false,
   error: {}
 };
@@ -18,7 +19,8 @@ export default function postReducer(state = initialState, action) {
     case types.fetchPostsSuccess:
       return {
         ...state,
-        posts: action.posts,
+        posts: [...state.posts, ...action.posts],
+        currentPage: state.currentPage + 1,
         isLoading: false,
         error: {}
       };

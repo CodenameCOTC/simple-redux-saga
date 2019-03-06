@@ -6,7 +6,13 @@ import Posts from "../Posts";
 
 const Home = props => (
   <div>
-    <button onClick={() => props.fetchPosts()}>Fetch Posts</button>
+    <h4>{props.currentPage}</h4>
+    <button
+      className="button"
+      onClick={() => props.fetchPosts(props.currentPage)}
+    >
+      Fetch Posts
+    </button>
     {props.isLoading && <p>Loading...</p>}
     <Posts />
   </div>
@@ -16,6 +22,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators({ fetchPosts }, dispatch);
 
 const mapStateToProps = state => ({
+  currentPage: state.currentPage,
   isLoading: state.isLoading
 });
 

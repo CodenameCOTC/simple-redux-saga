@@ -1,6 +1,9 @@
 import * as types from "./types";
 
-export const fetchPosts = () => ({ type: types.fetchPosts });
+export const fetchPosts = currentPage => ({
+  type: types.fetchPosts,
+  currentPage
+});
 
 export const fetchPostsSuccess = posts => ({
   type: types.fetchPostsSuccess,
