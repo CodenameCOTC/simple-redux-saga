@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { fetchPosts } from "../../redux/actions";
 import Posts from "../Posts";
+import AddPost from "../AddPost";
 
 const Home = props => (
   <div>
@@ -11,8 +12,9 @@ const Home = props => (
       className="button"
       onClick={() => props.fetchPosts(props.currentPage)}
     >
-      Fetch Posts
+      Load More
     </button>
+    <AddPost />
     {props.isLoading && <p>Loading...</p>}
     <Posts />
   </div>

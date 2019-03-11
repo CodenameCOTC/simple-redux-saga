@@ -4,7 +4,11 @@ const initialState = {
   posts: [],
   currentPage: 1,
   isLoading: false,
-  error: {}
+  error: {},
+  status: {
+    isLoading: false,
+    error: {}
+  }
 };
 
 export default function postReducer(state = initialState, action) {
@@ -30,6 +34,36 @@ export default function postReducer(state = initialState, action) {
         ...state,
         isLoading: false,
         error: action.error
+      };
+
+    case types.addPost:
+      return {
+        ...state,
+        status: {
+          ...state.status,
+          isLoading: true,
+          error: {}
+        }
+      };
+
+    case types.addPostSuccess:
+      return {
+        ...state,
+        posts: [action.post, ...state.posts],
+        status: {
+          isLoading: false,
+          error: {}
+        }
+      };
+
+    case types.addPostFailure:
+      return {
+        ...state,
+        status: {
+          ...state.status,
+          isLoading: false,
+          error: action.error
+        }
       };
     default:
       return state;
